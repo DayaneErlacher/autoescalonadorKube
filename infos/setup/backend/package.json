@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dayane",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "compression": "^1.7.4",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-brute": "^1.0.1",
+    "express-jwt": "^7.7.5",
+    "express-minify": "^1.0.0",
+    "express-minify-html": "^0.12.0",
+    "express-rate-limit": "^6.4.0",
+    "express-session": "^1.17.3",
+    "helmet": "^5.1.0",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3",
+    "prom-client": "^14.0.1"
+  }
+}

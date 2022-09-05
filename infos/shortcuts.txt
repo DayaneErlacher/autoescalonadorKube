@@ -1,0 +1,22 @@
+## REDE
+docker network create --driver bridge pg_network
+docker network inspect pg_network
+
+## SETUPS
+docker image build -t setup1-backend .
+docker run -it --name setup1-backend --network pg_network setup1-backend
+
+docker image build -t client .
+docker run -it --name client1 --network pg_network client
+
+docker image build -t gateway-frontend .
+docker run -it --name gateway-frontend --network pg_network -p 3003:3003 gateway-frontend
+#
+
+docker exec -it setup1-backend bash
+
+## DDOS
+https://github.com/palahsu/DDoS-Ripper
+docker run -it --name ddos3 --network pg_network ddos
+python3 DRipper.py -s setup1-backend -p 8080 -t 135
+python3 DRipper.py -s setup1-backend -p 8080 -t 443

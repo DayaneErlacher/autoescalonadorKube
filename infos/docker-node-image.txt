@@ -1,0 +1,15 @@
+#ubuntu-node image
+docker run -it ubuntu
+#
+apt-get update
+apt-get install curl
+curl -sL https://deb.nodesource.com/setup_16.x | bash
+apt-get install nodejs
+node -v
+npm -v
+apt install nano
+exit
+#
+docker ps -a 
+# pega id do container 
+dcoker container commit id nomedaimagem

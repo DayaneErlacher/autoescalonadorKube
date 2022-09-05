@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: raven
+  labels:
+    app: raven
+spec:
+  containers:
+  - image: dayerlacher/projeto-graduacao:raven
+    command:
+    - "sleep"
+    - "604800"
+    resources:
+      limits:
+        memory: 1Gi
+        cpu: 2
+      requests:
+        memory: 512Mi
+        cpu: 1
+    imagePullPolicy: IfNotPresent
+    name: raven
+  restartPolicy: Always

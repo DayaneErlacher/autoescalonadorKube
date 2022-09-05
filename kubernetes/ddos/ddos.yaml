@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ddos443
+  labels:
+    app: ddos443
+spec:
+  containers:
+  - image: dayerlacher/projeto-graduacao:ripper
+    command:
+      - "sleep"
+      - "604800"
+    imagePullPolicy: IfNotPresent
+    name: ddos443
+  restartPolicy: Always

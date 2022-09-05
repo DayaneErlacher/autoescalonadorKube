@@ -1,0 +1,4 @@
+psql -d database_pg -U pguser
+e=G*g#n2bFQx^YAy
+
+kubectl run postgresql-postgresql-client --rm --tty -i --restart=Never --namespace default --image postgres:alpine --env="PGPASSWORD=UFES2022" --command -- psql --host postgres -U postgres

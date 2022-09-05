@@ -1,0 +1,39 @@
+docker pull postgres:alpine
+docker run --network pg_network --name postgre-db -e POSTGRES_PASSWORD=UFES2022 -d postgres:alpine
+docker exec -it postgre-db bash
+psql -U postgres
+create database database_pg;
+\c database_pg
+
+CREATE TABLE access_tokens (
+   id SERIAL PRIMARY KEY,
+   access_token text NOT NULL,
+   user_id integer NOT NULL
+);
+
+CREATE TABLE user_access (
+   id SERIAL PRIMARY KEY,
+   username text NOT NULL,
+   user_password text NOT NULL
+);
+
+CREATE TABLE users (
+   id SERIAL PRIMARY KEY,
+   username text NOT NULL,
+   user_password text NOT NULL,
+   age integer NOT NULL,
+   address text NOT NULL,
+   cpf text NOT NULL
+);
+
+INSERT INTO user_access(username, user_password)
+VALUES ('test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08');
+
+create user client with encrypted password 'Y9!AH&pez1@nnyZD';
+grant all privileges on database database_pg to client;
+GRANT ALL PRIVILEGES ON TABLE users TO client;
+GRANT ALL PRIVILEGES ON TABLE user_access TO client;
+GRANT ALL PRIVILEGES ON TABLE access_tokens TO client;
+GRANT USAGE, SELECT ON SEQUENCE users_id_seq TO client;
+GRANT USAGE, SELECT ON SEQUENCE access_tokens_id_seq TO client;
+GRANT USAGE, SELECT ON SEQUENCE user_access_id_seq TO client;

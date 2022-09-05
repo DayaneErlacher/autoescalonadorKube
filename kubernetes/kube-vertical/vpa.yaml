@@ -1,0 +1,19 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa
+  namespace: default
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: pg-setup-day
+  updatePolicy:
+    updateMode: "Auto"
+  resourcePolicy:
+    containerPolicies:
+      - containerName: pg-setup-day
+        maxAllowed:
+          cpu: 2
+          memory: 3Gi
+        controlledResources: ["cpu", "memory"]
